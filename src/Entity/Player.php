@@ -16,6 +16,16 @@ class Player
     #[ORM\Column(type: 'string', length: 255)]
     private string $name;
 
+    /**
+     * @param int|null $id
+     * @return Player
+     */
+    public function setId(?int $id): Player
+    {
+        $this->id = $id;
+        return $this;
+    }
+
     #[ORM\Column(type: 'string', length: 255)]
     private string $position;
 
