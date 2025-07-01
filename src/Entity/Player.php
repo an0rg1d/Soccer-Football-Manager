@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\PlayerRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PlayerRepository::class)]
@@ -46,6 +47,9 @@ class Player
 
     #[ORM\Column(type: 'integer')]
     private int $redCards;
+
+    #[ORM\Column(type: 'integer')]
+    private int $marketvalue;
 
     /**
      * @return int|null
@@ -216,4 +220,23 @@ class Player
     {
         return $this->goals + $this->assists;
     }
+
+    /**
+     * @return int
+     */
+    public function getMarketvalue(): int
+    {
+        return $this->marketvalue;
+    }
+
+    /**
+     * @param int $marketvalue
+     * @return Player
+     */
+    public function setMarketvalue(int $marketvalue): Player
+    {
+        $this->marketvalue = $marketvalue;
+        return $this;
+    }
+
 }

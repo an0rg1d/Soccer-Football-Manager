@@ -1,12 +1,12 @@
-% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Football Manager for noobs{% endblock %}
 
 {% block body %}
     <main class="flex flex-col lg:flex-row">
         <div class="px-16 pt-12 w-full h-full">
-            <h1 class="text-4xl font-bold text-gray-800">Welcome to Football Manager for noobs!</h1>
-            <p class="text-xl text-gray-600 mt-4">This is a simple web application to show you best players of the world currently and in history.</p>
+            <h1 class="text-4xl font-bold text-gray-800">Welcome to Football Manager!</h1>
+            <p class="text-2xl text-gray-600 mt-4">This is a simple web application to show you information about your favourite game and edit it!.</p>
 
             <div class="flex justify-center mt-8">
                 <div class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
@@ -31,6 +31,7 @@
                                 <th class="px-6 py-4 text-center text-sm font-semibold uppercase tracking-wider">Assists</th>
                                 <th class="px-6 py-4 text-center text-sm font-semibold uppercase tracking-wider">Yellow Cards</th>
                                 <th class="px-6 py-4 text-center text-sm font-semibold uppercase tracking-wider">Red Cards</th>
+                                <th class="px-6 py-4 text-center text-sm font-demibold uppercase tracking-wider">Market Value</th>
                             </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
@@ -111,6 +112,17 @@
                                             {% else %}
                                                 <span class="text-gray-400">-</span>
                                             {% endif %}
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                                        <div class="flex items-center justify-center">
+                                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
+                                                  {% if player.marketvalue >= 100000000 %}bg-gradient-to-r from-yellow-400 to-yellow-600 text-white
+                                                  {% elseif player.marketvalue >= 50000000 %}bg-gradient-to-r from-green-400 to green-600 text-white
+                                                  {% elseif player.marketvalue >= 2000000 %}bg-gradient-to-r from-blue-400 to blue-600
+                                                  {% else %}bg-gray-100 text-gray-800{% endif %}">
+                                                  💰 €{{ (player.marketvalue / 1000000)|number_format(0) }}M
+                                            </span>
                                         </div>
                                     </td>
                                 </tr>

@@ -112,4 +112,34 @@ class PlayerRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function findByMarketValueRange(int $minValue, int $maxValue): array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.marketvalue BETWEEN :minValue AND :maxValue')
+            ->setParameter('minValue', $minValue)
+            ->setParameter('maxValue', $maxValue)
+            ->orderBy('p.marketvalue', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findMostValuablePlayers(int $limit = 10): array
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.marketvalue', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getAverageMarketValueByPosition(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p.position, AVG(p.marketvalue) as avgMarketValue')
+            ->groupBy('p.position')
+            ->orderBy('avgMarketValue', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }
