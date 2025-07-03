@@ -11,7 +11,7 @@ class PlayerFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $playersData = [
-            // [name, position, club, country, goals, assists, yellowCards, redCards, marketvalue]
+            // [name, position, club, country, goals, assists, yellowCards, redCards, marketValue]
             ['Lionel Messi', 'Center Attacking Midfielder', 'Inter Miami', 'Argentina', 847, 403, 93, 3, 50000000],
             ['Cristiano Ronaldo', 'Forward', 'Al Nassr', 'Portugal', 937, 273, 125, 11, 40000000],
             ['Kylian Mbappé', 'Forward', 'Real Madrid', 'France', 344, 170, 49, 2, 180000000],
