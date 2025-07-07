@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Club;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,7 +15,7 @@ class ClubRepository extends ServiceEntityRepository
     }
 
     // methods section, find by something
-    public function findAllOrderedByName(string $name): array
+    public function findAllOrderedByName(): array
     {
         return $this->createQueryBuilder('c')
             ->orderBy('c.name', 'ASC')
