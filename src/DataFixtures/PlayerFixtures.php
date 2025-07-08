@@ -13,7 +13,7 @@ class PlayerFixtures extends Fixture
         $playersData = [
             // [name, position, club, country, goals, assists, yellowCards, redCards, marketValue]
             ['Lionel Messi', 'Center Attacking Midfielder', 'Inter Miami', 'Argentina', 847, 403, 93, 3, 50000000],
-            ['Cristiano Ronaldo', 'Forward', 'Al Nassr', 'Portugal', 937, 273, 125, 11, 40000000],
+            ['Cristiano Ronaldo', 'Forward', 'Al Nassr', 'Portugal', 937, 273, 125, 12, 40000000],
             ['Kylian Mbappé', 'Forward', 'Real Madrid', 'France', 359, 118, 58, 3, 180000000],
             ['Erling Haaland', 'Forward', 'Manchester City', 'Norway', 284, 51, 27, 0, 180000000],
             ['Kevin De Bruyne', 'Center Midfielder', 'Manchester City', 'Belgium', 161, 303, 79, 4, 55000000],
@@ -31,7 +31,7 @@ class PlayerFixtures extends Fixture
             ['Lamine Yamal', 'Right Winger/Midfielder', 'Barcelona', 'Barcelona', 29, 33, 12, 0, 200000000],
             ['Jordi Alba', 'Center Midfielder', 'Inter Miami', 'Spain', 52, 153, 122, 5, 15000000],
             ['Arda Guler', 'Right Winger/Midfielder', 'Real Madrid', 'Turkey', 35, 36, 12, 0, 65000000],
-            ['Neymar Junior.', 'Left Winger', 'Santos', 'Brazil', 459, 312, 134, 8, 40000000],
+            ['Neymar Junior.', 'Left Winger', 'Santos', 'Brazil', 459, 277, 161, 12, 40000000],
             ['David Beckham', 'Left Winger', 'Retired', 'England', 129, 247, 105, 6, 2000000],
             ['🕊️Diogo Jota','🕊️Forward', 'Liverpool', '🕊️Portugal', 133, 67, 13, 2, 85000000],
             ['Andre Silva','Forward', 'FC Porto', 'Portugal', 59, 77, 13, 3, 35000000],
