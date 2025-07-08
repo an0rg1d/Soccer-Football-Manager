@@ -33,7 +33,12 @@ class PlayerFixtures extends Fixture
             ['Arda Guler', 'Right Winger/Midfielder', 'Real Madrid', 'Turkey', 27, 48, 12, 0, 65000000],
             ['Neymar Junior.', 'Left Winger', 'Santos', 'Brazil', 459, 312, 134, 8, 40000000],
             ['David Beckham', 'Left Winger', 'Retired', 'England', 129, 247, 105, 6, 2000000],
-            ['🕊️Diogo Jota','🕊️Forward', 'Liverpool', '🕊️Portugal', 10, 13, 1, 0, 9999999999],
+            ['🕊️Diogo Jota','🕊️Forward', 'Liverpool', '🕊️Portugal', 133, 67, 13, 2, 85000000],
+            ['Andre Silva','Forward', 'FC Porto', 'Portugal', 59, 77, 13, 3, 35000000],
+            ['Thiery Henry','Left Winger', 'Retired', 'France', 477, 329, 68, 7, 110000],
+            ['Gareth Bale','Right Winger', 'Retired', 'Wales', 341, 159, 45, 5, 110000],
+            ['Ousmane Dembele', 'Forward', 'Paris Saint-Germain', 'France', 256, 109, 32, 3, 145000000],
+            ['Desire Doue', 'Right Winger', 'Paris Saint-Germain', 'France', 79, 115, 8, 1, 100000000],
         ];
 
         foreach ($playersData as $data) {
