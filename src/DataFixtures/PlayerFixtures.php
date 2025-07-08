@@ -44,6 +44,11 @@ class PlayerFixtures extends Fixture
             ['Mark Andre Ter-Stegen','Goalkeeper', 'Barcelona', 'Germany', 0, 0, 1, 0, 10000000],
             ['Raphinha','Left Winger', 'Barcelona', 'Brazil', 116, 78, 67, 1, 90000000],
             ['Cole Palmer','Center Attacking Midfielder', 'Chelsea', 'England', 90, 51, 25, 1, 120000000],
+            ['Phil Foden','Forward', 'Manchester City', 'England', 125, 83, 16, 1, 100000000],
+            ['Ronaldinho','Left Winger', 'Retired', 'Brazil', 335, 245, 48, 5, 100000],
+            ['Thomas Muler','Center Defensive Midfielder', 'Bayern', 'Germany', 245, 345, 67, 5, 12000000],
+            ['Didier Drogba','Forward','Retired','Cote d Ivoire', 471, 123, 48, 100000],
+            ['Samuel Eto-o','Forward', 'Retired', 'Cameroon', 543, 288, 65, 8, 100000],
         ];
 
         foreach ($playersData as $data) {
