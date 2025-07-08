@@ -47,8 +47,9 @@ class PlayerFixtures extends Fixture
             ['Phil Foden','Forward', 'Manchester City', 'England', 125, 83, 16, 1, 100000000],
             ['Ronaldinho','Left Winger', 'Retired', 'Brazil', 335, 245, 48, 5, 100000],
             ['Thomas Muler','Center Defensive Midfielder', 'Bayern', 'Germany', 245, 345, 67, 5, 12000000],
-            ['Didier Drogba','Forward','Retired','Cote d Ivoire', 471, 123, 48, 100000],
+            ['Didier Drogba','Forward','Retired','Cote d Ivoire', 471, 123, 48, 0, 100000],
             ['Samuel Eto-o','Forward', 'Retired', 'Cameroon', 543, 288, 65, 8, 100000],
+            ['Eusebio','Forward', 'Retired', 'Portugal', 634, 302, 81, 7, 100000],
         ];
 
         foreach ($playersData as $data) {
