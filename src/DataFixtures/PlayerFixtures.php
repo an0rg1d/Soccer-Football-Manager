@@ -38,7 +38,7 @@ class PlayerFixtures extends Fixture
             ['Thiery Henry','Left Winger', 'Retired', 'France', 477, 329, 68, 7, 110000],
             ['Gareth Bale','Right Winger', 'Retired', 'Wales', 341, 159, 45, 5, 110000],
             ['Ousmane Dembele', 'Forward', 'Paris Saint-Germain', 'France', 106, 96, 32, 3, 90000000],
-            ['Desire Doue', 'Right Winger', 'Paris Saint-Germain', 'France', 79, 115, 8, 1, 90000000],
+            ['Desire Doue', 'Right Winger', 'Paris Saint-Germain', 'France', 27, 24, 16, 0, 90000000],
             ['Khvicha Kvaratskhelia', 'Left Winger', 'Paris Saint-Germain', 'Georgia', 75, 46, 36, 1, 90000000],
             ['Gianluigi Donnarumma', 'GoalKeeper', 'Paris Saint-Germain', 'Italy', 0, 0, 3, 0, 50000000],
             ['Mark Andre Ter-Stegen','Goalkeeper', 'Barcelona', 'Germany', 0, 0, 1, 0, 10000000],
