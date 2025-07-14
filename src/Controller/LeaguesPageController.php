@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\LeaguesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -9,8 +10,10 @@ use Symfony\Component\Routing\Attribute\Route;
 class LeaguesPageController extends AbstractController
 {
     #[Route("/leagues", name: "leagues" )]
-    public function leaguesPage():Response
+    public function leaguesPage(LeaguesRepository $leaguesRepository):Response
     {
-        return $this->render('main/leagues.html.twig');
+        $leagues = $leaguesRepository->findAllOrderedByRanking();
+
+        return $this->render('main/leagues.html.twig', ['leagues' => $leagues]);
     }
 }

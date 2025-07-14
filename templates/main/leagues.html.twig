@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Leagues{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Football Leagues</h1>
+
+        <!-- Navigation Button -->
+        <div class="flex justify-center gap-8 mt-12">
+            <div class="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600 transition duration-300">
+                Look at the best players in the world!
+            </div>
+            <a href="{{ path('football') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-">
+                View Players
+            </a>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Ranking</th>
+                <th>League Name</th>
+                <th>Country</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for league in leagues %}
+                <tr>
+                    <td>{{ league.ranking }}</td>
+                    <td>{{ league.name }}</td>
+                    <td>{{ league.country }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

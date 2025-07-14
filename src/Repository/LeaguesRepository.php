@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Leagues;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -10,7 +11,7 @@ class LeaguesRepository extends ServiceEntityRepository
 
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, LeaguesRepository::class);
+        parent::__construct($registry, Leagues::class);
     }
 
     // Return all leagues ordered by different parameters in ascending order.
