@@ -9,14 +9,14 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ClubPageController extends AbstractController
 {
-    #[Route("/clubs", name: "main")]
-    public function clubpage(ClubRepository $clubRepository):Response
+    #[Route("/clubs", name: "clubs")]
+    public function clubpage(ClubRepository $clubRepository): Response
     {
         // Fetch the club from the database
         $clubs = $clubRepository->findAllOrderedByName();
 
         return $this->render('main/clubpage.html.twig', [
-            'clubs' => $clubs
+            'clubs' => $clubs,
         ]);
     }
 }
