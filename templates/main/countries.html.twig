@@ -1,0 +1,211 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of the countries in football{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-header">
+                <h1>Football Countries
+                    <small>Explore countries and their football heritage</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Countries Overview</h3>
+                </div>
+                <div class="panel-body">
+                    {% if countries is defined and countries|length > 0 %}
+                        <div class="row">
+                            {% for country in countries %}
+                                <div class="col-md-4 col-sm-6 mb-4">
+                                    <div class="card country-card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">{{ country.name }}</h4>
+                                            {% if country.code is defined %}
+                                                <span class="badge badge-primary">{{ country.code }}</span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="card-body">
+                                            {% if country.description is defined %}
+                                                <p class="card-text">{{ country.description }}</p>
+                                            {% endif %}
+
+                                            {% if country.leagues is defined and country.leagues|length > 0 %}
+                                                <p><strong>Leagues:</strong> {{ country.leagues|length }}</p>
+                                            {% endif %}
+
+                                            {% if country.clubs is defined and country.clubs|length > 0 %}
+                                                <p><strong>Clubs:</strong> {{ country.clubs|length }}</p>
+                                            {% endif %}
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="btn-group" role="group">
+                                                <a href="{{ path('leagues') }}" class="btn btn-primary btn-sm">
+                                                    <i class="glyphicon glyphicon-list"></i> View Leagues
+                                                </a>
+
+                                                <a href="{{ path('clubs') }}" class="btn btn-info btn-sm">
+                                                    <i class="glyphicon glyphicon-home"></i> View Clubs
+                                                </a>
+
+                                                <a href="{{ path('homepage') }}" class="btn btn-success btn-sm">
+                                                    <i class="glyphicon glyphicon-user"></i> View Players
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info">
+                            <h4>No Countries Found</h4>
+                            <p>There are currently no countries in the database.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Section -->
+    {% if countries is defined and countries|length > 0 %}
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Statistics</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="stat-box">
+                                    <h4>{{ countries|length }}</h4>
+                                    <p>Total Countries</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-box">
+                                    {% set totalLeagues = 0 %}
+                                    {% for country in countries %}
+                                        {% if country.leagues is defined %}
+                                            {% set totalLeagues = totalLeagues + country.leagues|length %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    <h4>{{ totalLeagues }}</h4>
+                                    <p>Total Leagues</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-box">
+                                    {% set totalClubs = 0 %}
+                                    {% for country in countries %}
+                                        {% if country.clubs is defined %}
+                                            {% set totalClubs = totalClubs + country.clubs|length %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    <h4>{{ totalClubs }}</h4>
+                                    <p>Total Clubs</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-box">
+                                    {% set totalPlayers = 0 %}
+                                    {% for country in countries %}
+                                        {% if country.players is defined %}
+                                            {% set totalPlayers = totalPlayers + country.players|length %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    <h4>{{ totalPlayers }}</h4>
+                                    <p>Total Players</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Navigation -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="text-center">
+                <a href="{{ path('homepage') }}" class="btn btn-default">
+                    <i class="glyphicon glyphicon-arrow-left"></i> Back to Home
+                </a>
+                <a href="{{ path('leagues') }}" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-list"></i> View All Leagues
+                </a>
+                <a href="{{ path('clubs') }}" class="btn btn-info">
+                    <i class="glyphicon glyphicon-home"></i> View All Clubs
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.country-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+}
+
+.country-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+    padding: 15px;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.stat-box h4 {
+    font-size: 2em;
+    color: #007bff;
+    margin-bottom: 5px;
+}
+
+.stat-box p {
+    color: #6c757d;
+    margin: 0;
+}
+
+.btn-group .btn {
+    margin-right: 5px;
+}
+
+.btn-group .btn:last-child {
+    margin-right: 0;
+}
+</style>
+{% endblock %}
