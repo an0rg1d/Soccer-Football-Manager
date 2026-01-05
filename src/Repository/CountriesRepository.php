@@ -13,49 +13,15 @@ class CountriesRepository extends ServiceEntityRepository
         parent::__construct($registry, Countries::class);
     }
 
-    public function findAllOrderedByName(): array
+    public function findAll(): array
     {
-        return $this->createQueryBuilder('c')
-            ->orderBy('c.name', 'ASC')
-            ->getQuery()
-            ->getResult();
+        return $this->findBy([], ['ranking' => 'ASC']);
     }
 
-    public function findByRanking($limit = 10): array
+    public function findAllOrderedByRanking(): array
     {
         return $this->createQueryBuilder('c')
             ->orderBy('c.ranking', 'ASC')
-            ->setMaxResults($limit)
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function findByWorldCups($limit = 10): array
-    {
-        return $this->createQueryBuilder('c')
-            ->join('c.worldCups', 'wc')
-            ->orderBy('wc.year', 'DESC')
-            ->setMaxResults($limit)
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function findByBestPlayers($limit = 3): array
-    {
-        return $this->createQueryBuilder('c')
-            ->join('c.players', 'p')
-            ->orderBy('p.rating', 'DESC')
-            ->setMaxResults($limit)
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function findByMarketValue($minValue, $maxValue): array
-    {
-        return $this->createQueryBuilder('c')
-            ->where('c.marketValue BETWEEN :minValue AND :maxValue')
-            ->setParameter('minValue', $minValue)
-            ->setParameter('maxValue', $maxValue)
             ->getQuery()
             ->getResult();
     }
