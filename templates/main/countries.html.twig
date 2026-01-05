@@ -28,22 +28,12 @@
                                     <div class="card country-card">
                                         <div class="card-header">
                                             <h4 class="card-title">{{ country.name }}</h4>
-                                            {% if country.code is defined %}
-                                                <span class="badge badge-primary">{{ country.code }}</span>
-                                            {% endif %}
+                                            <span class="badge badge-primary">Rank: {{ country.ranking }}</span>
                                         </div>
                                         <div class="card-body">
-                                            {% if country.description is defined %}
-                                                <p class="card-text">{{ country.description }}</p>
-                                            {% endif %}
-
-                                            {% if country.leagues is defined and country.leagues|length > 0 %}
-                                                <p><strong>Leagues:</strong> {{ country.leagues|length }}</p>
-                                            {% endif %}
-
-                                            {% if country.clubs is defined and country.clubs|length > 0 %}
-                                                <p><strong>Clubs:</strong> {{ country.clubs|length }}</p>
-                                            {% endif %}
+                                            <p><strong>World Cups Won:</strong> {{ country.worldCups }}</p>
+                                            <p><strong>Best Players:</strong> {{ country.bestPlayers }}</p>
+                                            <p><strong>Market Value:</strong> €{{ country.marketValue }}M</p>
                                         </div>
                                         <div class="card-footer">
                                             <div class="btn-group" role="group">
@@ -67,7 +57,8 @@
                     {% else %}
                         <div class="alert alert-info">
                             <h4>No Countries Found</h4>
-                            <p>There are currently no countries in the database.</p>
+                            <p>There are currently no countries in the database. Please load the fixtures first.</p>
+                            <p>Run: <code>php bin/console doctrine:fixtures:load</code></p>
                         </div>
                     {% endif %}
                 </div>
@@ -93,38 +84,32 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="stat-box">
-                                    {% set totalLeagues = 0 %}
+                                    {% set totalWorldCups = 0 %}
                                     {% for country in countries %}
-                                        {% if country.leagues is defined %}
-                                            {% set totalLeagues = totalLeagues + country.leagues|length %}
-                                        {% endif %}
+                                        {% set totalWorldCups = totalWorldCups + country.worldCups %}
                                     {% endfor %}
-                                    <h4>{{ totalLeagues }}</h4>
-                                    <p>Total Leagues</p>
+                                    <h4>{{ totalWorldCups }}</h4>
+                                    <p>Total World Cups</p>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="stat-box">
-                                    {% set totalClubs = 0 %}
+                                    {% set totalMarketValue = 0 %}
                                     {% for country in countries %}
-                                        {% if country.clubs is defined %}
-                                            {% set totalClubs = totalClubs + country.clubs|length %}
-                                        {% endif %}
+                                        {% set totalMarketValue = totalMarketValue + country.marketValue %}
                                     {% endfor %}
-                                    <h4>{{ totalClubs }}</h4>
-                                    <p>Total Clubs</p>
+                                    <h4>€{{ totalMarketValue }}M</h4>
+                                    <p>Total Market Value</p>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="stat-box">
-                                    {% set totalPlayers = 0 %}
+                                    {% set avgRanking = 0 %}
                                     {% for country in countries %}
-                                        {% if country.players is defined %}
-                                            {% set totalPlayers = totalPlayers + country.players|length %}
-                                        {% endif %}
+                                        {% set avgRanking = avgRanking + country.ranking %}
                                     {% endfor %}
-                                    <h4>{{ totalPlayers }}</h4>
-                                    <p>Total Players</p>
+                                    <h4>{{ (avgRanking / countries|length)|round }}</h4>
+                                    <p>Average Ranking</p>
                                 </div>
                             </div>
                         </div>
